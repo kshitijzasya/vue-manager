@@ -1,4 +1,11 @@
-export const SET_USER = 'SET_USER'
-export const GET_PROPERTS = 'GET_PROJECTS'
-export const ADD_PROJECT = 'ADD_PROJECT'
-export const SET_PROJECTS = 'SET_PROJECTS'
+const SET_USER = 'SET_USER'
+const GET_PROPERTS = 'GET_PROJECTS'
+const ADD_PROJECT = 'ADD_PROJECT'
+const SET_PROJECTS = 'SET_PROJECTS';
+
+export {
+    SET_USER,
+    GET_PROPERTS,
+    ADD_PROJECT,
+    SET_PROJECTS
+}

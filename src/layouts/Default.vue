@@ -9,7 +9,7 @@
 		<a-layout class="layout-default" id="layout-default" :class="[layoutClass]">
 
 			<!-- Layout Header ( Navbar ) -->
-			<DefaultHeader></DefaultHeader>
+			<!-- <DefaultHeader></DefaultHeader> -->
 			<!-- / Layout Header ( Navbar ) -->
 
 
@@ -20,7 +20,7 @@
 			<!-- / Page Content -->
 
 			<!-- Layout Footer -->
-			<DefaultFooter></DefaultFooter>
+			<!-- <DefaultFooter></DefaultFooter> -->
 			<!-- / Layout Footer -->
 
 		</a-layout>

@@ -11,8 +11,8 @@ const state = {
     projects: null
 }
 export default new Vuex.Store({
-    state
-    // actions,
-    // getters,
-    // mutations
+    state,
+    actions,
+    getters,
+    mutations
 })

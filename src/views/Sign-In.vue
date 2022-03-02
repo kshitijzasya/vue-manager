@@ -39,14 +39,14 @@
     					<a-switch v-model="rememberMe" /> Remember Me
 					</a-form-item>
 					<a-form-item>
-						<a-button type="primary" block html-type="submit" class="login-form-button">
+						<a-button type="primary" block html-type="submit" lass="login-form-button">
 							SIGN IN
 						</a-button>
 					</a-form-item>
 				</a-form>
 				<!-- / Sign In Form -->
 
-				<p class="font-semibold text-muted">Don't have an account? <router-link to="/sign-in" class="font-bold text-dark">Sign Up</router-link></p>
+				<p class="font-semibold text-muted">Don't have an account? <router-link to="/sign-up" class="font-bold text-dark">Sign Up</router-link></p>
 			</a-col>
 			<!-- / Sign In Form Column -->
 
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapState,mapGetters, mapMutations } from 'vuex';
+// import { mapActions } from 'vuex';
 
 	export default ({
 		data() {
@@ -76,24 +76,20 @@ import { mapState,mapGetters, mapMutations } from 'vuex';
 			this.form = this.$form.createForm(this, { name: 'normal_login' });
 		},
 		computed: {
-			// ...mapGetter([
-			// 	'isAuthenticated',
-			// ])
-		},
-		mounted() {
-			console.log('mounted', {
-				state: this.$state,
-				getters: this.$getters,
-			})
+			//Handle form submit
+			// Only use if want to import multiple actions
+			// ...mapActions(['login'])
 		},
 		methods: {
 			// Handles input validation after submission.
 			handleSubmit(e) {
-				e.preventDefault();
+				e.preventDefault(); 
 				this.form.validateFields((err, values) => {
 					if ( !err ) {
-						console.log('Received values of form: ', values) ;
+						console.log('Received values of form: ', values); 
+						this.$store.dispatch('login', values)
 					}
+					
 				});
 			},
 		},

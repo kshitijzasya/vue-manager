@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 	export default ({
 		computed: {
@@ -22,7 +23,7 @@
 			layout() {
 				return "layout-" + ( this.$route.meta.layout || "default" ).toLowerCase() ;
 			}
-		},
+		}
 	})
 	
 </script>
