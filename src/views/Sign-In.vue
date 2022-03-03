@@ -71,7 +71,7 @@
 				rememberMe: true,
 			}
 		},
-		beforeCreate() {
+		beforeCreate() { 
 			// Creates the form and adds to it component's "form" property.
 			this.form = this.$form.createForm(this, { name: 'normal_login' });
 		},
@@ -84,10 +84,12 @@
 			// Handles input validation after submission.
 			handleSubmit(e) {
 				e.preventDefault(); 
-				this.form.validateFields((err, values) => {
+				this.form.validateFields(async (err, values) => {
 					if ( !err ) {
 						console.log('Received values of form: ', values); 
-						this.$store.dispatch('login', values)
+						await this.$store.dispatch('login', values)
+						// console.log('user',this.$store.state.user)
+						this.$router.replace('dashboard')
 					}
 					
 				});

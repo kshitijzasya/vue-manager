@@ -114,7 +114,7 @@ function addLayoutToRoute( route, parentLayout = "default" )
 routes = routes.map( ( route ) => addLayoutToRoute( route ) ) ;
 
 const router = new VueRouter({
-	mode: 'hash',
+	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
 	scrollBehavior (to, from, savedPosition) {
@@ -132,8 +132,8 @@ const router = new VueRouter({
 	}
 })
 
-router.beforeEach((to, from, next) => {
-	let isRestricted = to.meta.restricted
+router.beforeEach((to, from, next) => { 
+	let isRestricted = to.meta.restricted; console.log('need authentication', store.getters.isAuthenticated)
 	if (isRestricted && !store.getters.isAuthenticated) next({name: 'Login'})
 	else next()
 })
