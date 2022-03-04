@@ -10,8 +10,9 @@
 				<a-col :span="24" :md="12" style="display: flex; align-items: center; justify-content: flex-end">
 					<a-radio-group v-model="projectHeaderBtns" size="small">
 						<a-radio-button value="all">ALL</a-radio-button>
-						<a-radio-button value="online">ONLINE</a-radio-button>
-						<a-radio-button value="stores">STORES</a-radio-button>
+						<a-radio-button value="in-progress">IN-PROGRESS</a-radio-button>
+						<a-radio-button value="canceled">CANCELED</a-radio-button>
+						<a-radio-button value="done">DONE</a-radio-button>
 					</a-radio-group>
 				</a-col>
 			</a-row>
@@ -79,12 +80,18 @@
 				default: () => [],
 			},
 		},
+		emits: ['update:projects'],
 		data() {
 			return {
 				// Active button for the "Projects" table's card header radio button group.
 				projectHeaderBtns: 'all',
 			}
 		},
+		watch: {
+			projectHeaderBtns(val) { 
+				this.$emit('update:projects', val)
+			}
+		}
 	})
 
 </script>

@@ -14,13 +14,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 	export default ({
 		computed: {
 			// Sets components name based on current route's specified layout, defaults to
 			// <layout-default></layout-default> component.
-			layout() {
+			layout() { console.log(this.$route)
 				return "layout-" + ( this.$route.meta.layout || "default" ).toLowerCase() ;
 			}
 		}

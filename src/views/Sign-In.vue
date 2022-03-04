@@ -39,7 +39,7 @@
     					<a-switch v-model="rememberMe" /> Remember Me
 					</a-form-item>
 					<a-form-item>
-						<a-button type="primary" block html-type="submit" lass="login-form-button">
+						<a-button type="primary" block html-type="submit" class="login-form-button">
 							SIGN IN
 						</a-button>
 					</a-form-item>

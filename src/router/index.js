@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 import store from '../store';
 
 Vue.use(VueRouter)
@@ -50,6 +50,54 @@ let routes = [
 		},
 	},
 	{
+		path: '/users',
+		name: 'Users',
+		layout: "dashboard",
+		component: () => import('../views/users/Users.vue'),
+		meta: {
+			restricted: true
+		},
+		children: [
+			{
+				path: 'create',
+				name: 'CreateUser',
+				layout: 'dashboard',
+				component: () => import('../views/users/Create.vue'),
+			}
+		]
+	},
+	{
+		path: '/projects',
+		name: 'Projects',
+		layout: "dashboard",
+		component: () => import('../views/projects/Projects.vue'),
+		meta: {
+			restricted: true
+		},
+		children: [
+			{
+				path: 'create',
+				name: 'CreateProject',
+				layout: 'dashboard',
+				component: () => import('../views/projects/Create.vue'),
+			}
+		]
+	},
+	{
+		path: '/project/:id',
+		name: 'Project',
+		layout: "dashboard",
+		component: () => import('../views/projects/Project.vue'),
+		children: [
+			{
+				path: 'edit',
+				name: 'EditProject',
+				layout: 'dashboard',
+				component: () => import('../views/projects/Edit.vue'),
+			}			
+		]
+	},
+	{
 		path: '/billing',
 		name: 'Billing',
 		layout: "dashboard",
@@ -57,16 +105,6 @@ let routes = [
 		meta: {
 			restricted: true
 		},
-	},
-	{
-		path: '/rtl',
-		name: 'RTL',
-		layout: "dashboard-rtl",
-		meta: {
-			layoutClass: 'dashboard-rtl',
-			restricted: true
-		},
-		component: () => import('../views/RTL.vue'),
 	},
 	{
 		path: '/Profile',
@@ -84,7 +122,7 @@ let routes = [
 		component: () => import('../views/Sign-In.vue'),
 		meta: {
 			restricted: false
-		},
+		}
 	},
 	{
 		path: '/sign-up',
@@ -99,26 +137,24 @@ let routes = [
 
 // Adding layout property from each route to the meta
 // object so it can be accessed later.
-function addLayoutToRoute( route, parentLayout = "default" )
-{
-	route.meta = route.meta || {} ;
-	route.meta.layout = route.layout || parentLayout ;
-	
-	if( route.children )
-	{
-		route.children = route.children.map( ( childRoute ) => addLayoutToRoute( childRoute, route.meta.layout ) ) ;
+function addLayoutToRoute(route, parentLayout = "default") {
+	route.meta = route.meta || {};
+	route.meta.layout = route.layout || parentLayout;
+
+	if (route.children) { 
+		route.children = route.children.map((childRoute) => addLayoutToRoute(childRoute, route.meta.layout));
 	}
-	return route ;
+	return route;
 }
 
-routes = routes.map( ( route ) => addLayoutToRoute( route ) ) ;
-
+routes = routes.map((route) => addLayoutToRoute(route));
+console.log(routes)
 const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
-	scrollBehavior (to, from, savedPosition) {
-		if ( to.hash ) {
+	scrollBehavior(to, from, savedPosition) {
+		if (to.hash) {
 			return {
 				selector: to.hash,
 				behavior: 'smooth',
@@ -132,10 +168,12 @@ const router = new VueRouter({
 	}
 })
 
-router.beforeEach((to, from, next) => { 
-	let isRestricted = to.meta.restricted; console.log('need authentication', store.getters.isAuthenticated)
-	if (isRestricted && !store.getters.isAuthenticated) next({name: 'Login'})
-	else next()
+router.beforeEach((to, from, next) => {
+	let isRestricted = to.meta.restricted;
+	let isLoggedIn = store.getters.isAuthenticated;
+	// if (isRestricted && !isLoggedIn) next({name: 'Login'})
+	// else next()
+	next()
 })
 
 export default router

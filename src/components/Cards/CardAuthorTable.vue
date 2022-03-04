@@ -65,12 +65,18 @@
 				default: () => [],
 			},
 		},
+		emits: ['filter:data'],
 		data() {
 			return {
 				// Active button for the "Authors" table's card header radio button group.
 				authorsHeaderBtns: 'all',
 			}
 		},
+		watch: {
+			authorsHeaderBtns(val) {
+				this.$emit('filter:data', val)
+			}
+		}
 	})
 
 </script>
