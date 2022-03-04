@@ -37,42 +37,9 @@
 
 <script>
 
-	// "Projects" table component.
-	import CardProjectTable2 from '../../components/Cards/CardProjectTable2' ;
-	
-	// "Projects" table list of columns and their properties.
-	const table2Columns = [
-		{
-			title: 'COMPANIES',
-			dataIndex: 'company',
-			scopedSlots: { customRender: 'company' },
-			width: 300,
-		},
-		{
-			title: 'BUDGET',
-			dataIndex: 'budget',
-			class: 'font-semibold text-muted',
-		},
-		{
-			title: 'STATUS',
-			dataIndex: 'status',
-			class: 'font-semibold text-muted text-sm',
-		},
-		{
-			title: 'COMPLETION',
-			scopedSlots: { customRender: 'completion' },
-			dataIndex: 'completion',
-		},
-		{
-			title: '',
-			scopedSlots: { customRender: 'editBtn' },
-			width: 50,
-		},
-	];
 
 	export default ({
 		components: {
-			CardProjectTable2,
 		},
 		data() {
 			return {

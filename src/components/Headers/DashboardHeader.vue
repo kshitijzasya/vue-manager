@@ -30,9 +30,9 @@
 				<a-col :span="24" :md="18" class="header-control">
 
 					<!-- Header Control Buttons -->
-					<a-button type="link" @click="logoutUser">
+					<a-button type="link" @click="logoutUser" title="Logout">
 								<a-icon type="logout" theme="outlined" />
-						</a-button>
+					</a-button>
 					<a-dropdown :trigger="['click']" overlayClassName="header-notifications-dropdown" :getPopupContainer="() => wrapper">
 						<a-badge count="4">
 							<a class="ant-dropdown-link" @click="e => e.preventDefault()">

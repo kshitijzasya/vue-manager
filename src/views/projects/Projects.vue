@@ -18,13 +18,13 @@
 	  </template>
 	  <template v-else>
       <a-col :span="24" class="mb-24" >
-		  <router-link to="/projects/create"><a-button>Add</a-button></router-link>
+		  
         <!-- Projects Table Column -->
-        <CardProjectTable2
+        <ProjectsTable
           :data="table2Data"
           :columns="table2Columns"
           @update:projects="updateData"
-        ></CardProjectTable2>
+        ></ProjectsTable>
         <!-- / Projects Table Column -->
       </a-col>
 	  </template>
@@ -36,7 +36,7 @@
 
 <script>
 // "Projects" table component.
-import CardProjectTable2 from "../../components/Cards/CardProjectTable2";
+import ProjectsTable from "../../components/Cards/ProjectsTable";
 
 // "Projects" table list of columns and their properties.
 const table2Columns = [
@@ -143,7 +143,7 @@ const originalData = [
 
 export default {
   components: {
-    CardProjectTable2,
+    ProjectsTable,
   },
   data() {
     return {

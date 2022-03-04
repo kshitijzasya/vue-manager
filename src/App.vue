@@ -19,7 +19,7 @@
 		computed: {
 			// Sets components name based on current route's specified layout, defaults to
 			// <layout-default></layout-default> component.
-			layout() { console.log(this.$route)
+			layout() { 
 				return "layout-" + ( this.$route.meta.layout || "default" ).toLowerCase() ;
 			}
 		}

@@ -32,10 +32,10 @@
 			<a-col :span="24" class="mb-24">
 
 				<!-- Projects Table Column -->
-				<CardProjectTable2
+				<ProjectsTable
 					:data="table2Data"
 					:columns="table2Columns"
-				></CardProjectTable2>
+				></ProjectsTable>
 				<!-- / Projects Table Column -->
 
 			</a-col>
@@ -53,7 +53,7 @@
 	import CardAuthorTable from '../components/Cards/CardAuthorTable' ;
 
 	// "Projects" table component.
-	import CardProjectTable2 from '../components/Cards/CardProjectTable2' ;
+	import ProjectsTable from '../components/Cards/ProjectsTable' ;
 	
 	// "Authors" table list of columns and their properties.
 	const table1Columns = [
@@ -278,7 +278,7 @@
 	export default ({
 		components: {
 			CardAuthorTable,
-			CardProjectTable2,
+			ProjectsTable,
 		},
 		data() {
 			return {

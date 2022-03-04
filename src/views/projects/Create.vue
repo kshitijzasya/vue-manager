@@ -46,7 +46,7 @@
         <a-form-item label="Budget">
           <a-input
             v-decorator="[
-              'budger',
+              'budget',
               {
                 rules: [
                   {
@@ -67,7 +67,7 @@
             'status',
             {
               rules: [
-                { required: true, message: 'Please select your gender!' },
+                { required: true, message: 'Please select status!' },
               ],
             },
           ]"
